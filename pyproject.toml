@@ -1,0 +1,35 @@
+[project]
+name = "default_model_environment"
+version = "0.0.1"
+description = "Default model environment template"
+dependencies = [
+    "keras==2.11.*",
+    "pandas",
+    "scikit-learn==1.2.*",
+    "tensorflow==2.11.*",
+    "pvlib==0.9.*",
+    "holidays",
+    "pytest",
+    "influxdb",
+    "pymongo",
+    "matplotlib"
+]
+requires-python = ">=3.9,<3.10"
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "flake8>=6.0.0",
+    "black>=23.7.0",
+]
+test = [
+    "pytest>=7.4.0",
+    "coverage>=7.2.7",
+]
+
+[tool.pdm.scripts]
+test = "pytest tests"
+lint = "flake8"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
