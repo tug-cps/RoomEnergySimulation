@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Beyond room energy simulation API
+  description: |-
+    This is the preliminary OpenAPI specification for project Beyond to start room energy simulations and retrieve results asynchronously
+  version: 1.0.0
+servers:
+  - url: https://beyond.dilt.at/api/v1
+tags:
+  - name: simulation
+    description: Simulatioon operations
+paths:
+  /simulation:
+    get:
+      tags:
+        - simulation
+      summary: Get a list of all simulations
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 1234567890
+                    status:
+                      type: string
+                      enum: [pending, finished, error]
+                    result:
+                      type: number
+    post:
+      tags:
+        - simulation
+      summary: Start a simulation
+      requestBody:
+        description: Simulation parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wall_insulation_thickness:
+                  description: Wall insulation thickness (m)
+                  type: number
+                window_u_value:
+                  description: Window U-value (W/m2K)
+                  type: number
+                window_shgc:
+                  description: Window SHGC (ratio)
+                  type: number
+                window_shading_control:
+                  description: Window shading control (W/m2)
+                  type: number
+                thermostat_setpoint:
+                  description: Cooling/heating thermostat setpoints (C) 
+                  type: number
+                
+      responses:
+        '200':
+          description: successful operation
+
+  /simulation/{id}:
+    get:
+      tags:
+        - simulation
+      summary: Get simulation result by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 12345
+                  status:
+                    type: string
+                    enum: [pending, finished, error]
+                  result:
+                    type: number
+        '404':
+          description: simulation not found
