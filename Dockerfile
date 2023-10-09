@@ -1,15 +1,28 @@
-FROM python:3.9-slim
+# build stage
+FROM python:3.11-slim AS builder
 
-WORKDIR /app
+# install PDM
+RUN pip install -U pip setuptools wheel
+RUN pip install pdm
 
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# copy files
+COPY pyproject.toml pdm.lock README.md /project/
+COPY src/ /project/src
 
-COPY . .
+# install dependencies and project into the local packages directory
+WORKDIR /project
+RUN mkdir __pypackages__ && pdm sync --prod --no-editable
 
-# enable color support
-ENV TERM xterm-256color
-# disable buffered stdout
-ENV PYTHONUNBUFFERED=1
 
-CMD ["python", "-m", "model"]
+# run stage
+FROM python:3.11-slim
+
+# retrieve packages from build stage
+ENV PYTHONPATH=/project/pkgs
+COPY --from=builder /project/__pypackages__/3.11/lib /project/pkgs
+
+# retrieve executables
+COPY --from=builder /project/__pypackages__/3.11/bin/* /bin/
+
+# set command/entrypoint, adapt to fit your needs
+CMD ["python", "-m", "project"]

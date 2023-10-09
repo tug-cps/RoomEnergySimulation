@@ -1,24 +1,6 @@
 version: '3.5'
 
 services:
-  model:
+  app:
     build:
       context: .
-
-  mongodb:
-    image: mongo:5.0
-    ports: [ "27017:27017" ]
-    volumes: [ mongodb:/data/db, mongodb-configdb:/data/configdb ]
-    command: --noauth
-
-  influxdb:
-    image: influxdb:1.8
-    volumes: [ influxdb:/var/lib/influxdb ]
-    environment:
-      - INFLUXDB_HTTP_AUTH_ENABLED=True
-      - INFLUXDB_REPORTING_DISABLED=True
-
-volumes:
-  influxdb:
-  mongodb:
-  mongodb-configdb:
