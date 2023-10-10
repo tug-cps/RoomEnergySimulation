@@ -6,7 +6,7 @@ groups = ["default", "lint", "test", "dev"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:c2a58b52c74f07fc57451aa6b6b914cc55585855a1deafb85c8a0aef4abc3c1e"
+content_hash = "sha256:33548c2d8a460213d6162c6cf19d17f2369fe6f82a1e1967f9c58ac5ca209fba"
 
 [[package]]
 name = "anyio"
@@ -74,20 +74,6 @@ files = [
     {file = "argon2_cffi_bindings-21.2.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:20ef543a89dee4db46a1a6e206cd015360e5a75822f76df533845c3cbaf72670"},
     {file = "argon2_cffi_bindings-21.2.0-pp38-pypy38_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:ed2937d286e2ad0cc79a7087d3c272832865f779430e0cc2b4f3718d3159b0cb"},
     {file = "argon2_cffi_bindings-21.2.0-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:5e00316dabdaea0b2dd82d141cc66889ced0cdcbfa599e8b471cf22c620c329a"},
-]
-
-[[package]]
-name = "arrow"
-version = "1.3.0"
-requires_python = ">=3.8"
-summary = "Better dates & times for Python"
-dependencies = [
-    "python-dateutil>=2.7.0",
-    "types-python-dateutil>=2.8.10",
-]
-files = [
-    {file = "arrow-1.3.0-py3-none-any.whl", hash = "sha256:c728b120ebc00eb84e01882a6f5e7927a53960aa990ce7dd2b10f39005a67f80"},
-    {file = "arrow-1.3.0.tar.gz", hash = "sha256:d4540617648cb5f895730f1ad8c82a65f2dad0166f57b75f3ca54759c4d67a85"},
 ]
 
 [[package]]
@@ -287,6 +273,19 @@ files = [
 ]
 
 [[package]]
+name = "clickclick"
+version = "20.10.2"
+summary = "Click utility functions"
+dependencies = [
+    "PyYAML>=3.11",
+    "click>=4.0",
+]
+files = [
+    {file = "clickclick-20.10.2-py2.py3-none-any.whl", hash = "sha256:c8f33e6d9ec83f68416dd2136a7950125bd256ec39ccc9a85c6e280a16be2bb5"},
+    {file = "clickclick-20.10.2.tar.gz", hash = "sha256:4efb13e62353e34c5eef7ed6582c4920b418d7dedc86d819e22ee089ba01802c"},
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
@@ -307,6 +306,42 @@ dependencies = [
 files = [
     {file = "comm-0.1.4-py3-none-any.whl", hash = "sha256:6d52794cba11b36ed9860999cd10fd02d6b2eac177068fdd585e1e2f8a96e67a"},
     {file = "comm-0.1.4.tar.gz", hash = "sha256:354e40a59c9dd6db50c5cc6b4acc887d82e9603787f83b68c01a80a923984d15"},
+]
+
+[[package]]
+name = "connexion"
+version = "2.14.2"
+requires_python = ">=3.6"
+summary = "Connexion - API first applications with OpenAPI/Swagger and Flask"
+dependencies = [
+    "PyYAML<7,>=5.1",
+    "clickclick<21,>=1.2",
+    "flask<2.3,>=1.0.4",
+    "inflection<0.6,>=0.3.1",
+    "itsdangerous>=0.24",
+    "jsonschema<5,>=2.5.1",
+    "packaging>=20",
+    "requests<3,>=2.9.1",
+    "werkzeug<2.3,>=1.0",
+]
+files = [
+    {file = "connexion-2.14.2-py2.py3-none-any.whl", hash = "sha256:a73b96a0e07b16979a42cde7c7e26afe8548099e352cf350f80c57185e0e0b36"},
+    {file = "connexion-2.14.2.tar.gz", hash = "sha256:dbc06f52ebeebcf045c9904d570f24377e8bbd5a6521caef15a06f634cf85646"},
+]
+
+[[package]]
+name = "connexion"
+version = "2.14.2"
+extras = ["swagger-ui"]
+requires_python = ">=3.6"
+summary = "Connexion - API first applications with OpenAPI/Swagger and Flask"
+dependencies = [
+    "connexion==2.14.2",
+    "swagger-ui-bundle<0.1,>=0.0.2",
+]
+files = [
+    {file = "connexion-2.14.2-py2.py3-none-any.whl", hash = "sha256:a73b96a0e07b16979a42cde7c7e26afe8548099e352cf350f80c57185e0e0b36"},
+    {file = "connexion-2.14.2.tar.gz", hash = "sha256:dbc06f52ebeebcf045c9904d570f24377e8bbd5a6521caef15a06f634cf85646"},
 ]
 
 [[package]]
@@ -444,6 +479,22 @@ files = [
 ]
 
 [[package]]
+name = "flask"
+version = "2.2.5"
+requires_python = ">=3.7"
+summary = "A simple framework for building complex web applications."
+dependencies = [
+    "Jinja2>=3.0",
+    "Werkzeug>=2.2.2",
+    "click>=8.0",
+    "itsdangerous>=2.0",
+]
+files = [
+    {file = "Flask-2.2.5-py3-none-any.whl", hash = "sha256:58107ed83443e86067e41eff4631b058178191a355886f8e479e347fa1285fdf"},
+    {file = "Flask-2.2.5.tar.gz", hash = "sha256:edee9b0a7ff26621bd5a8c10ff484ae28737a2410d99b0bb9a6850c7fb977aa0"},
+]
+
+[[package]]
 name = "fonttools"
 version = "4.43.1"
 requires_python = ">=3.8"
@@ -470,16 +521,6 @@ files = [
 ]
 
 [[package]]
-name = "fqdn"
-version = "1.5.1"
-requires_python = ">=2.7, !=3.0, !=3.1, !=3.2, !=3.3, !=3.4, <4"
-summary = "Validates fully-qualified domain names against RFC 1123, so that they are acceptable to modern bowsers"
-files = [
-    {file = "fqdn-1.5.1-py3-none-any.whl", hash = "sha256:3a179af3761e4df6eb2e026ff9e1a3033d3587bf980a0b1b2e1e5d08d7358014"},
-    {file = "fqdn-1.5.1.tar.gz", hash = "sha256:105ed3677e767fb5ca086a0c1f4bb66ebc3c100be518f0e0d755d9eae164d89f"},
-]
-
-[[package]]
 name = "idna"
 version = "3.4"
 requires_python = ">=3.5"
@@ -487,6 +528,16 @@ summary = "Internationalized Domain Names in Applications (IDNA)"
 files = [
     {file = "idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
     {file = "idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
+]
+
+[[package]]
+name = "inflection"
+version = "0.5.1"
+requires_python = ">=3.5"
+summary = "A port of Ruby on Rails inflector to Python"
+files = [
+    {file = "inflection-0.5.1-py2.py3-none-any.whl", hash = "sha256:f38b2b640938a4f35ade69ac3d053042959b62a0f1076a5bbaa1b9526605a8a2"},
+    {file = "inflection-0.5.1.tar.gz", hash = "sha256:1a29730d366e996aaacffb2f1f1cb9593dc38e2ddd30c91250c6dde09ea9b417"},
 ]
 
 [[package]]
@@ -575,16 +626,13 @@ files = [
 ]
 
 [[package]]
-name = "isoduration"
-version = "20.11.0"
+name = "itsdangerous"
+version = "2.1.2"
 requires_python = ">=3.7"
-summary = "Operations with ISO 8601 durations"
-dependencies = [
-    "arrow>=0.15.0",
-]
+summary = "Safely pass data to untrusted environments and back."
 files = [
-    {file = "isoduration-20.11.0-py3-none-any.whl", hash = "sha256:b2904c2a4228c3d44f409c8ae8e2370eb21a26f7ac2ec5446df141dde3452042"},
-    {file = "isoduration-20.11.0.tar.gz", hash = "sha256:ac2f9015137935279eac671f94f89eb00584f940f5dc49462a0c4ee692ba1bd9"},
+    {file = "itsdangerous-2.1.2-py3-none-any.whl", hash = "sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44"},
+    {file = "itsdangerous-2.1.2.tar.gz", hash = "sha256:5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a"},
 ]
 
 [[package]]
@@ -633,16 +681,6 @@ files = [
 ]
 
 [[package]]
-name = "jsonpointer"
-version = "2.4"
-requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*"
-summary = "Identify specific nodes in a JSON document (RFC 6901) "
-files = [
-    {file = "jsonpointer-2.4-py2.py3-none-any.whl", hash = "sha256:15d51bba20eea3165644553647711d150376234112651b4f1811022aecad7d7a"},
-    {file = "jsonpointer-2.4.tar.gz", hash = "sha256:585cee82b70211fa9e6043b7bb89db6e1aa49524340dde8ad6b63206ea689d88"},
-]
-
-[[package]]
 name = "jsonschema"
 version = "4.17.3"
 requires_python = ">=3.7"
@@ -659,19 +697,11 @@ files = [
 [[package]]
 name = "jsonschema"
 version = "4.17.3"
-extras = ["format-nongpl"]
 requires_python = ">=3.7"
 summary = "An implementation of JSON Schema validation for Python"
 dependencies = [
-    "fqdn",
-    "idna",
-    "isoduration",
-    "jsonpointer>1.13",
-    "jsonschema==4.17.3",
-    "rfc3339-validator",
-    "rfc3986-validator>0.1.0",
-    "uri-template",
-    "webcolors>=1.11",
+    "attrs>=17.4.0",
+    "pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0",
 ]
 files = [
     {file = "jsonschema-4.17.3-py3-none-any.whl", hash = "sha256:a870ad254da1a8ca84b6a2905cac29d265f805acc57af304784962a2aa6508f6"},
@@ -1763,6 +1793,18 @@ files = [
 ]
 
 [[package]]
+name = "swagger-ui-bundle"
+version = "0.0.9"
+summary = "swagger_ui_bundle - swagger-ui files in a pip package"
+dependencies = [
+    "Jinja2>=2.0",
+]
+files = [
+    {file = "swagger_ui_bundle-0.0.9-py3-none-any.whl", hash = "sha256:cea116ed81147c345001027325c1ddc9ca78c1ee7319935c3c75d3669279d575"},
+    {file = "swagger_ui_bundle-0.0.9.tar.gz", hash = "sha256:b462aa1460261796ab78fd4663961a7f6f347ce01760f1303bbbdf630f11f516"},
+]
+
+[[package]]
 name = "terminado"
 version = "0.17.1"
 requires_python = ">=3.7"
@@ -1830,15 +1872,6 @@ files = [
 ]
 
 [[package]]
-name = "types-python-dateutil"
-version = "2.8.19.14"
-summary = "Typing stubs for python-dateutil"
-files = [
-    {file = "types-python-dateutil-2.8.19.14.tar.gz", hash = "sha256:1f4f10ac98bb8b16ade9dbee3518d9ace017821d94b057a425b069f834737f4b"},
-    {file = "types_python_dateutil-2.8.19.14-py3-none-any.whl", hash = "sha256:f977b8de27787639986b4e28963263fd0e5158942b3ecef91b9335c130cb1ce9"},
-]
-
-[[package]]
 name = "tzdata"
 version = "2023.3"
 requires_python = ">=2"
@@ -1846,16 +1879,6 @@ summary = "Provider of IANA time zone data"
 files = [
     {file = "tzdata-2023.3-py2.py3-none-any.whl", hash = "sha256:7e65763eef3120314099b6939b5546db7adce1e7d6f2e179e3df563c70511eda"},
     {file = "tzdata-2023.3.tar.gz", hash = "sha256:11ef1e08e54acb0d4f95bdb1be05da659673de4acbd21bf9c69e94cc5e907a3a"},
-]
-
-[[package]]
-name = "uri-template"
-version = "1.3.0"
-requires_python = ">=3.7"
-summary = "RFC 6570 URI Template Processor"
-files = [
-    {file = "uri-template-1.3.0.tar.gz", hash = "sha256:0e00f8eb65e18c7de20d595a14336e9f337ead580c70934141624b6d1ffdacc7"},
-    {file = "uri_template-1.3.0-py3-none-any.whl", hash = "sha256:a44a133ea12d44a0c0f06d7d42a52d71282e77e2f937d8abd5655b8d56fc1363"},
 ]
 
 [[package]]
@@ -1878,16 +1901,6 @@ files = [
 ]
 
 [[package]]
-name = "webcolors"
-version = "1.13"
-requires_python = ">=3.7"
-summary = "A library for working with the color formats defined by HTML and CSS."
-files = [
-    {file = "webcolors-1.13-py3-none-any.whl", hash = "sha256:29bc7e8752c0a1bd4a1f03c14d6e6a72e93d82193738fa860cbff59d0fcc11bf"},
-    {file = "webcolors-1.13.tar.gz", hash = "sha256:c225b674c83fa923be93d235330ce0300373d02885cef23238813b0d5668304a"},
-]
-
-[[package]]
 name = "webencodings"
 version = "0.5.1"
 summary = "Character encoding aliases for legacy web content"
@@ -1904,6 +1917,19 @@ summary = "WebSocket client for Python with low level API options"
 files = [
     {file = "websocket-client-1.6.4.tar.gz", hash = "sha256:b3324019b3c28572086c4a319f91d1dcd44e6e11cd340232978c684a7650d0df"},
     {file = "websocket_client-1.6.4-py3-none-any.whl", hash = "sha256:084072e0a7f5f347ef2ac3d8698a5e0b4ffbfcab607628cadabc650fc9a83a24"},
+]
+
+[[package]]
+name = "werkzeug"
+version = "2.2.3"
+requires_python = ">=3.7"
+summary = "The comprehensive WSGI web application library."
+dependencies = [
+    "MarkupSafe>=2.1.1",
+]
+files = [
+    {file = "Werkzeug-2.2.3-py3-none-any.whl", hash = "sha256:56433961bc1f12533306c624f3be5e744389ac61d722175d543e1751285da612"},
+    {file = "Werkzeug-2.2.3.tar.gz", hash = "sha256:2e1ccc9417d4da358b9de6f174e3ac094391ea1d4fbef2d667865d819dfd0afe"},
 ]
 
 [[package]]
