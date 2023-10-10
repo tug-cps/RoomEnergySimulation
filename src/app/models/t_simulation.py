@@ -22,24 +22,16 @@ class TSimulation(Model):
         :param result: The result of this TSimulation.  # noqa: E501
         :type result: float
         """
-        self.openapi_types = {
-            'id': str,
-            'status': str,
-            'result': float
-        }
+        self.openapi_types = {"id": str, "status": str, "result": float}
 
-        self.attribute_map = {
-            'id': 'id',
-            'status': 'status',
-            'result': 'result'
-        }
+        self.attribute_map = {"id": "id", "status": "status", "result": "result"}
 
         self._id = id
         self._status = status
         self._result = result
 
     @classmethod
-    def from_dict(cls, dikt) -> 'TSimulation':
+    def from_dict(cls, dikt) -> "TSimulation":
         """Returns the dict as a model
 
         :param dikt: A dict.
@@ -90,10 +82,7 @@ class TSimulation(Model):
         """
         allowed_values = ["pending", "finished", "error"]  # noqa: E501
         if status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"
-                .format(status, allowed_values)
-            )
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))
 
         self._status = status
 
