@@ -5,15 +5,15 @@ import connexion
 from app import encoder
 
 
-def main():
+def create_app():
     app = connexion.App(__name__, specification_dir='./openapi/')
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('openapi.yaml',
                 arguments={'title': 'Beyond room energy simulation API'},
                 pythonic_params=True)
-
-    app.run(port=8080)
+    return app
 
 
 if __name__ == '__main__':
-    main()
+    app = create_app()
+    app.run(port=8080)
