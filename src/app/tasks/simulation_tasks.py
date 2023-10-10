@@ -2,7 +2,11 @@ from celery import shared_task
 
 
 @shared_task(ignore_result=False)
-def simulate() -> float:
+def simulate(wall_insulation_thickness: float,
+             window_u_value: float,
+             window_shgc: float,
+             window_shading_control: float,
+             thermostat_setpoint: float) -> float:
     # FIXME:
     # load model
     # start simulation

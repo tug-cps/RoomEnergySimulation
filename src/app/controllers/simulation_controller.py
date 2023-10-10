@@ -1,16 +1,16 @@
 import connexion
 from celery.result import AsyncResult
+from flask import abort
 
 from app.models.t_simulation_parameters import TSimulationParameters  # noqa: E501
 from app.tasks.simulation_tasks import simulate
-from flask import abort
 
 
 def simulation_id_get(id_: str):  # noqa: E501
     """Get simulation result by id
 
-    :param id:
-    :type id: str
+    :param id_:
+    :type id_: str
 
     :rtype: Union[TSimulation, Tuple[TSimulation, int], Tuple[TSimulation, int, Dict[str, str]]
     """
@@ -39,5 +39,9 @@ def simulation_post(t_simulation_parameters=None):  # noqa: E501
     if connexion.request.is_json:
         t_simulation_parameters = TSimulationParameters.from_dict(connexion.request.get_json())  # noqa: E501
 
-    result = simulate.delay()
+    result = simulate.delay(t_simulation_parameters.wall_insulation_thickness,
+                            t_simulation_parameters.window_u_value,
+                            t_simulation_parameters.window_shgc,
+                            t_simulation_parameters.window_shading_control,
+                            t_simulation_parameters.thermostat_setpoint)
     return {"id": result.id}
