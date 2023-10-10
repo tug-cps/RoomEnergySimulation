@@ -22,6 +22,7 @@ dev = [
     "setuptools>=68.2.2",
     "jupyter>=1.0.0",
     "matplotlib>=3.8.0",
+    "jsonschema<4.18",
 ]
 
 [tool.pdm.scripts]
