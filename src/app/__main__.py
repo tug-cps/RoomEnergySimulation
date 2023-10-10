@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from app.app import create_app
+from app.factory import create_app
 
 if __name__ == '__main__':
     app = create_app()
