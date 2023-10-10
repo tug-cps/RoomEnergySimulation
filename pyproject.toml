@@ -29,3 +29,4 @@ dev = [
 [tool.pdm.scripts]
 test = "pytest tests"
 lint = "flake8"
+generate = "openapi-generator generate -g python-flask -i openapi.yaml -o . -p pythonSrcRoot=src -p packageName=app"
