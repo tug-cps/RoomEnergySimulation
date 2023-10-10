@@ -14,3 +14,6 @@ tox.ini
 
 # disable generated tests
 **/test/**
+
+# modified files
+src/app/__main__.py

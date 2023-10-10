@@ -18,9 +18,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/_simulation_get_default_response_inner'
-                type: array
+                $ref: '#/components/schemas/T_SimulationArray'
           description: successful operation
       summary: Get a list of all simulations
       tags:
@@ -32,7 +30,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/_simulation_post_request'
+              $ref: '#/components/schemas/T_SimulationParameters'
         description: Simulation parameters
       responses:
         "200":
@@ -57,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_simulation__id__get_200_response'
+                $ref: '#/components/schemas/T_Simulation'
           description: successful operation
         "404":
           description: simulation not found
@@ -67,7 +65,7 @@ paths:
       x-openapi-router-controller: app.controllers.simulation_controller
 components:
   schemas:
-    _simulation__id__get_200_response:
+    T_Simulation:
       example:
         result: 0.8008281904610115
         id: "12345"
@@ -87,9 +85,13 @@ components:
         result:
           title: result
           type: number
-      title: _simulation__id__get_200_response
+      title: T_Simulation
       type: object
-    _simulation_post_request:
+    T_SimulationArray:
+      items:
+        $ref: '#/components/schemas/T_Simulation'
+      type: array
+    T_SimulationParameters:
       properties:
         wall_insulation_thickness:
           description: Wall insulation thickness (m)
@@ -111,27 +113,5 @@ components:
           description: Cooling/heating thermostat setpoints (C)
           title: thermostat_setpoint
           type: number
-      title: _simulation_post_request
-      type: object
-    _simulation_get_default_response_inner:
-      example:
-        result: 0.8008281904610115
-        id: "1234567890"
-        status: pending
-      properties:
-        id:
-          example: "1234567890"
-          title: id
-          type: string
-        status:
-          enum:
-          - pending
-          - finished
-          - error
-          title: status
-          type: string
-        result:
-          title: result
-          type: number
-      title: _simulation_get_default_response_inner
+      title: T_SimulationParameters
       type: object
