@@ -7,4 +7,4 @@ def simulate() -> float:
     # load model
     # start simulation
     # return value
-    return 0xCAFEBABE
+    return 1234567890

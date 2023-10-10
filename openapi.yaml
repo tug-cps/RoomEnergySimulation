@@ -11,17 +11,6 @@ tags:
     description: Simulatioon operations
 paths:
   /simulation:
-    get:
-      tags:
-        - simulation
-      summary: Get a list of all simulations
-      responses:
-        default:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/T_SimulationArray'
     post:
       tags:
         - simulation
@@ -36,6 +25,10 @@ paths:
       responses:
         '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T_SimulationResponse'
 
   /simulation/{id}:
     get:
@@ -67,13 +60,15 @@ components:
           example: 12345
         status:
           type: string
-          enum: [ pending, finished, error ]
+          enum: [ STARTED, RETRY, FAILURE, SUCCESS ]
         result:
           type: number
-    T_SimulationArray:
-      type: array
-      items:
-        $ref: '#/components/schemas/T_Simulation'
+    T_SimulationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 12345
     T_SimulationParameters:
       type: object
       properties:
