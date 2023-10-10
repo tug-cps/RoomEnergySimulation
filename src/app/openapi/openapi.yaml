@@ -11,19 +11,6 @@ tags:
   name: simulation
 paths:
   /simulation:
-    get:
-      operationId: simulation_get
-      responses:
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/T_SimulationArray'
-          description: successful operation
-      summary: Get a list of all simulations
-      tags:
-      - simulation
-      x-openapi-router-controller: app.controllers.simulation_controller
     post:
       operationId: simulation_post
       requestBody:
@@ -34,6 +21,10 @@ paths:
         description: Simulation parameters
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/T_SimulationResponse'
           description: successful operation
       summary: Start a simulation
       tags:
@@ -69,7 +60,7 @@ components:
       example:
         result: 0.8008281904610115
         id: "12345"
-        status: pending
+        status: STARTED
       properties:
         id:
           example: "12345"
@@ -77,9 +68,10 @@ components:
           type: string
         status:
           enum:
-          - pending
-          - finished
-          - error
+          - STARTED
+          - RETRY
+          - FAILURE
+          - SUCCESS
           title: status
           type: string
         result:
@@ -87,10 +79,16 @@ components:
           type: number
       title: T_Simulation
       type: object
-    T_SimulationArray:
-      items:
-        $ref: '#/components/schemas/T_Simulation'
-      type: array
+    T_SimulationResponse:
+      example:
+        id: "12345"
+      properties:
+        id:
+          example: "12345"
+          title: id
+          type: string
+      title: T_SimulationResponse
+      type: object
     T_SimulationParameters:
       properties:
         wall_insulation_thickness:

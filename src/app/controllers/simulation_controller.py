@@ -1,31 +1,29 @@
 import connexion
+from celery.result import AsyncResult
 
-from app.models.t_simulation import TSimulation  # noqa: E501
 from app.models.t_simulation_parameters import TSimulationParameters  # noqa: E501
+from app.tasks.simulation_tasks import simulate
+from flask import abort
 
 
-def simulation_get():  # noqa: E501
-    """Get a list of all simulations
-
-     # noqa: E501
-
-
-    :rtype: Union[List[TSimulation], Tuple[List[TSimulation], int], Tuple[List[TSimulation], int, Dict[str, str]]
-    """
-    return "do some magic!"
-
-
-def simulation_id_get(id):  # noqa: E501
+def simulation_id_get(id_: str):  # noqa: E501
     """Get simulation result by id
-
-     # noqa: E501
 
     :param id:
     :type id: str
 
     :rtype: Union[TSimulation, Tuple[TSimulation, int], Tuple[TSimulation, int, Dict[str, str]]
     """
-    return "do some magic!"
+    result = AsyncResult(id_)
+    if result.state == "PENDING":
+        abort(404)
+
+    return {
+        "id": result.id,
+        "result": result.result if result.ready() else None,
+        "status": result.state,
+        "date_done": result.date_done,
+    }
 
 
 def simulation_post(t_simulation_parameters=None):  # noqa: E501
@@ -40,4 +38,6 @@ def simulation_post(t_simulation_parameters=None):  # noqa: E501
     """
     if connexion.request.is_json:
         t_simulation_parameters = TSimulationParameters.from_dict(connexion.request.get_json())  # noqa: E501
-    return "do some magic!"
+
+    result = simulate.delay()
+    return {"id": result.id}

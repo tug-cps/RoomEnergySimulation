@@ -80,7 +80,7 @@ class TSimulation(Model):
         :param status: The status of this TSimulation.
         :type status: str
         """
-        allowed_values = ["pending", "finished", "error"]  # noqa: E501
+        allowed_values = ["STARTED", "RETRY", "FAILURE", "SUCCESS"]  # noqa: E501
         if status not in allowed_values:
             raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))
 
