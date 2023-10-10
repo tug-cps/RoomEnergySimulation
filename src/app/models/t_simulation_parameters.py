@@ -12,7 +12,14 @@ class TSimulationParameters(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, wall_insulation_thickness=None, window_u_value=None, window_shgc=None, window_shading_control=None, thermostat_setpoint=None):  # noqa: E501
+    def __init__(
+        self,
+        wall_insulation_thickness=None,
+        window_u_value=None,
+        window_shgc=None,
+        window_shading_control=None,
+        thermostat_setpoint=None,
+    ):  # noqa: E501
         """TSimulationParameters - a model defined in OpenAPI
 
         :param wall_insulation_thickness: The wall_insulation_thickness of this TSimulationParameters.  # noqa: E501
@@ -27,19 +34,19 @@ class TSimulationParameters(Model):
         :type thermostat_setpoint: float
         """
         self.openapi_types = {
-            'wall_insulation_thickness': float,
-            'window_u_value': float,
-            'window_shgc': float,
-            'window_shading_control': float,
-            'thermostat_setpoint': float
+            "wall_insulation_thickness": float,
+            "window_u_value": float,
+            "window_shgc": float,
+            "window_shading_control": float,
+            "thermostat_setpoint": float,
         }
 
         self.attribute_map = {
-            'wall_insulation_thickness': 'wall_insulation_thickness',
-            'window_u_value': 'window_u_value',
-            'window_shgc': 'window_shgc',
-            'window_shading_control': 'window_shading_control',
-            'thermostat_setpoint': 'thermostat_setpoint'
+            "wall_insulation_thickness": "wall_insulation_thickness",
+            "window_u_value": "window_u_value",
+            "window_shgc": "window_shgc",
+            "window_shading_control": "window_shading_control",
+            "thermostat_setpoint": "thermostat_setpoint",
         }
 
         self._wall_insulation_thickness = wall_insulation_thickness
@@ -49,7 +56,7 @@ class TSimulationParameters(Model):
         self._thermostat_setpoint = thermostat_setpoint
 
     @classmethod
-    def from_dict(cls, dikt) -> 'TSimulationParameters':
+    def from_dict(cls, dikt) -> "TSimulationParameters":
         """Returns the dict as a model
 
         :param dikt: A dict.

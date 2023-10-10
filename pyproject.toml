@@ -17,6 +17,7 @@ requires-python = ">=3.11"
 lint = [
     "flake8>=6.1.0",
     "black>=23.9.1",
+    "autoflake>=2.2.1",
 ]
 test = [
     "pytest>=7.4.2",
@@ -32,4 +33,17 @@ dev = [
 [tool.pdm.scripts]
 test = "pytest tests"
 lint = "flake8"
+cleanup = { shell = "autoflake src && black src" }
+
 generate = "openapi-generator generate -g python-flask -i openapi.yaml -o . -p pythonSrcRoot=src -p packageName=app"
+post_generate = { composite = ["cleanup"] }
+
+[tool.autoflake]
+recursive = true
+in-place = true
+imports = ["app"]
+remove-unused-variables = true
+
+[tool.black]
+line-length = 120
+target-version = ['py311']

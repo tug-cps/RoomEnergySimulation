@@ -20,7 +20,7 @@ def celery_init_app(app: Flask) -> Celery:
 
 
 def create_app():
-    app = connexion.App(__name__, specification_dir='./openapi/')
+    app = connexion.App(__name__, specification_dir="./openapi/")
     app.app.json_provider_class = encoder.JSONEncoder
     app.app.config.from_mapping(
         CELERY=dict(
@@ -31,7 +31,9 @@ def create_app():
     )
     app.app.config.from_prefixed_env()
     celery_init_app(app.app)
-    app.add_api('openapi.yaml',
-                arguments={'title': 'Beyond room energy simulation API'},
-                pythonic_params=True)
+    app.add_api(
+        "openapi.yaml",
+        arguments={"title": "Beyond room energy simulation API"},
+        pythonic_params=True,
+    )
     return app
