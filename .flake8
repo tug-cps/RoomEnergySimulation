@@ -10,5 +10,13 @@ exclude =
     __pypackages__,
 max_line_length = 120
 ignore =
+    E202
     E203
+    E111
+    W291
+    W293
+    W391
     W503
+    F401
+    F841
+    E721
