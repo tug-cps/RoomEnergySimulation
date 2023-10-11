@@ -1,0 +1,38 @@
+- name: Install and start docker
+  hosts: beyond
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.apt:
+        update_cache: yes
+        state: present
+        pkg:
+          - ca-certificates
+          - curl
+          - gnupg
+    - name: Add Docker GPG key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/trusted.gpg.d/docker.asc
+        mode: '0644'
+        force: true
+    - name: Add docker apt repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+        state: present
+        update_cache: yes
+    - name: Install docker
+      ansible.builtin.apt:
+        name: docker
+        state: present
+    - name: Enable and start docker
+      ansible.builtin.systemd:
+        name: docker
+        state: started
+        enabled: true
+- name: Install deps
+  hosts: beyond
+  tasks:
+    - name: Install git
+      ansible.builtin.apt:
+        name: git
+        state: present
