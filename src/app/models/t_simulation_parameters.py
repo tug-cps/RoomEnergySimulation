@@ -15,6 +15,7 @@ class TSimulationParameters(Model):
     def __init__(
         self,
         wall_insulation_thickness=None,
+        wall_u_value=None,
         window_u_value=None,
         window_shgc=None,
         window_shading_control=None,
@@ -24,6 +25,8 @@ class TSimulationParameters(Model):
 
         :param wall_insulation_thickness: The wall_insulation_thickness of this TSimulationParameters.  # noqa: E501
         :type wall_insulation_thickness: float
+        :param wall_u_value: The wall_u_value of this TSimulationParameters.  # noqa: E501
+        :type wall_u_value: float
         :param window_u_value: The window_u_value of this TSimulationParameters.  # noqa: E501
         :type window_u_value: float
         :param window_shgc: The window_shgc of this TSimulationParameters.  # noqa: E501
@@ -35,6 +38,7 @@ class TSimulationParameters(Model):
         """
         self.openapi_types = {
             "wall_insulation_thickness": float,
+            "wall_u_value": float,
             "window_u_value": float,
             "window_shgc": float,
             "window_shading_control": float,
@@ -43,6 +47,7 @@ class TSimulationParameters(Model):
 
         self.attribute_map = {
             "wall_insulation_thickness": "wall_insulation_thickness",
+            "wall_u_value": "wall_u_value",
             "window_u_value": "window_u_value",
             "window_shgc": "window_shgc",
             "window_shading_control": "window_shading_control",
@@ -50,6 +55,7 @@ class TSimulationParameters(Model):
         }
 
         self._wall_insulation_thickness = wall_insulation_thickness
+        self._wall_u_value = wall_u_value
         self._window_u_value = window_u_value
         self._window_shgc = window_shgc
         self._window_shading_control = window_shading_control
@@ -88,6 +94,29 @@ class TSimulationParameters(Model):
         """
 
         self._wall_insulation_thickness = wall_insulation_thickness
+
+    @property
+    def wall_u_value(self) -> float:
+        """Gets the wall_u_value of this TSimulationParameters.
+
+        Wall U-Value (W/m2K)  # noqa: E501
+
+        :return: The wall_u_value of this TSimulationParameters.
+        :rtype: float
+        """
+        return self._wall_u_value
+
+    @wall_u_value.setter
+    def wall_u_value(self, wall_u_value: float):
+        """Sets the wall_u_value of this TSimulationParameters.
+
+        Wall U-Value (W/m2K)  # noqa: E501
+
+        :param wall_u_value: The wall_u_value of this TSimulationParameters.
+        :type wall_u_value: float
+        """
+
+        self._wall_u_value = wall_u_value
 
     @property
     def window_u_value(self) -> float:

@@ -2,9 +2,9 @@ src/app/__init__.py
 src/app/encoder.py
 src/app/models/__init__.py
 src/app/models/base_model.py
-src/app/models/t_simulation.py
 src/app/models/t_simulation_parameters.py
 src/app/models/t_simulation_response.py
+src/app/models/t_simulation_result.py
 src/app/openapi/openapi.yaml
 src/app/typing_utils.py
 src/app/util.py

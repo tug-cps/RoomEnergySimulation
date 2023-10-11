@@ -2,9 +2,9 @@ import connexion
 from celery.result import AsyncResult
 from flask import abort
 
-from app.models.t_simulation import TSimulation
 from app.models.t_simulation_parameters import TSimulationParameters  # noqa: E501
 from app.models.t_simulation_response import TSimulationResponse
+from app.models.t_simulation_result import TSimulationResult
 from app.tasks.simulation_tasks import simulate
 
 
@@ -20,12 +20,12 @@ def simulation_id_get(id_: str):  # noqa: E501
     if result.state == "PENDING":
         abort(404)
 
-    return TSimulation(
+    return TSimulationResult(
         id=result.id,
         heating_energy_consumption=result.result["heating_energy_consumption"] if result.ready() else None,
         cooling_energy_consumption=result.result["cooling_energy_consumption"] if result.ready() else None,
         date_done=result.date_done,
-        status=result.state
+        status=result.state,
     ).to_dict()
 
 
@@ -44,6 +44,7 @@ def simulation_post(t_simulation_parameters=None):  # noqa: E501
 
     result = simulate.delay(
         t_simulation_parameters.wall_insulation_thickness,
+        t_simulation_parameters.wall_u_value,
         t_simulation_parameters.window_u_value,
         t_simulation_parameters.window_shgc,
         t_simulation_parameters.window_shading_control,

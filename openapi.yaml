@@ -47,12 +47,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/T_Simulation'
+                $ref: '#/components/schemas/T_SimulationResult'
         '404':
           description: simulation not found
 components:
   schemas:
-    T_Simulation:
+    T_SimulationResult:
       type: object
       properties:
         id:
@@ -79,6 +79,9 @@ components:
       properties:
         wall_insulation_thickness:
           description: Wall insulation thickness (m)
+          type: number
+        wall_u_value:
+          description: Wall U-Value (W/m2K)
           type: number
         window_u_value:
           description: Window U-value (W/m2K)
