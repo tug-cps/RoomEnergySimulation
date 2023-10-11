@@ -9,3 +9,6 @@ A simple REST backend to start simulations and retrieve results asynchronously
 * Redis as celery backend
 * Caddy as reverse proxy
 * Docker and docker-compose for deployment and containerization
+* Ansible to simplify deployment
+* PDM as package and dependency manager
+* pyenv to ensure the same python version on all dev machines
