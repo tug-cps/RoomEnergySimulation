@@ -12,23 +12,43 @@ class TSimulation(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id=None, status=None, result=None):  # noqa: E501
+    def __init__(
+        self, id=None, status=None, heating_energy_consumption=None, cooling_energy_consumption=None, date_done=None
+    ):  # noqa: E501
         """TSimulation - a model defined in OpenAPI
 
         :param id: The id of this TSimulation.  # noqa: E501
         :type id: str
         :param status: The status of this TSimulation.  # noqa: E501
         :type status: str
-        :param result: The result of this TSimulation.  # noqa: E501
-        :type result: float
+        :param heating_energy_consumption: The heating_energy_consumption of this TSimulation.  # noqa: E501
+        :type heating_energy_consumption: float
+        :param cooling_energy_consumption: The cooling_energy_consumption of this TSimulation.  # noqa: E501
+        :type cooling_energy_consumption: float
+        :param date_done: The date_done of this TSimulation.  # noqa: E501
+        :type date_done: datetime
         """
-        self.openapi_types = {"id": str, "status": str, "result": float}
+        self.openapi_types = {
+            "id": str,
+            "status": str,
+            "heating_energy_consumption": float,
+            "cooling_energy_consumption": float,
+            "date_done": datetime,
+        }
 
-        self.attribute_map = {"id": "id", "status": "status", "result": "result"}
+        self.attribute_map = {
+            "id": "id",
+            "status": "status",
+            "heating_energy_consumption": "heating_energy_consumption",
+            "cooling_energy_consumption": "cooling_energy_consumption",
+            "date_done": "date_done",
+        }
 
         self._id = id
         self._status = status
-        self._result = result
+        self._heating_energy_consumption = heating_energy_consumption
+        self._cooling_energy_consumption = cooling_energy_consumption
+        self._date_done = date_done
 
     @classmethod
     def from_dict(cls, dikt) -> "TSimulation":
@@ -87,22 +107,64 @@ class TSimulation(Model):
         self._status = status
 
     @property
-    def result(self) -> float:
-        """Gets the result of this TSimulation.
+    def heating_energy_consumption(self) -> float:
+        """Gets the heating_energy_consumption of this TSimulation.
 
 
-        :return: The result of this TSimulation.
+        :return: The heating_energy_consumption of this TSimulation.
         :rtype: float
         """
-        return self._result
+        return self._heating_energy_consumption
 
-    @result.setter
-    def result(self, result: float):
-        """Sets the result of this TSimulation.
+    @heating_energy_consumption.setter
+    def heating_energy_consumption(self, heating_energy_consumption: float):
+        """Sets the heating_energy_consumption of this TSimulation.
 
 
-        :param result: The result of this TSimulation.
-        :type result: float
+        :param heating_energy_consumption: The heating_energy_consumption of this TSimulation.
+        :type heating_energy_consumption: float
         """
 
-        self._result = result
+        self._heating_energy_consumption = heating_energy_consumption
+
+    @property
+    def cooling_energy_consumption(self) -> float:
+        """Gets the cooling_energy_consumption of this TSimulation.
+
+
+        :return: The cooling_energy_consumption of this TSimulation.
+        :rtype: float
+        """
+        return self._cooling_energy_consumption
+
+    @cooling_energy_consumption.setter
+    def cooling_energy_consumption(self, cooling_energy_consumption: float):
+        """Sets the cooling_energy_consumption of this TSimulation.
+
+
+        :param cooling_energy_consumption: The cooling_energy_consumption of this TSimulation.
+        :type cooling_energy_consumption: float
+        """
+
+        self._cooling_energy_consumption = cooling_energy_consumption
+
+    @property
+    def date_done(self) -> datetime:
+        """Gets the date_done of this TSimulation.
+
+
+        :return: The date_done of this TSimulation.
+        :rtype: datetime
+        """
+        return self._date_done
+
+    @date_done.setter
+    def date_done(self, date_done: datetime):
+        """Sets the date_done of this TSimulation.
+
+
+        :param date_done: The date_done of this TSimulation.
+        :type date_done: datetime
+        """
+
+        self._date_done = date_done

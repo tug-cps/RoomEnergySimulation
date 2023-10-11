@@ -4,7 +4,29 @@ services:
   app:
     build:
       context: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - REDIS_URI=redis://redis
+  app-worker:
+    build:
+      context: .
+    command: ["celery", "-A", "app.make_celery", "worker", "--loglevel", "INFO"]
+    environment:
+      - REDIS_URI=redis://redis
   redis:
     image: redis
     ports:
       - "127.0.0.1:6379:6379"
+  caddy:
+    image: caddy
+    ports:
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_config:/config
+      - caddy_data:/data
+
+volumes:
+  caddy_data:
+  caddy_config:

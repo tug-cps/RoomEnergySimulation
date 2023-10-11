@@ -8,7 +8,7 @@ servers:
   - url: https://beyond.dilt.at/api/v1
 tags:
   - name: simulation
-    description: Simulatioon operations
+    description: Simulation operations
 paths:
   /simulation:
     post:
@@ -61,8 +61,13 @@ components:
         status:
           type: string
           enum: [ STARTED, RETRY, FAILURE, SUCCESS ]
-        result:
+        heating_energy_consumption:
           type: number
+        cooling_energy_consumption:
+          type: number
+        date_done:
+          type: string
+          format: 'date-time'
     T_SimulationResponse:
       type: object
       properties:

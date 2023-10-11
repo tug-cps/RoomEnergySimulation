@@ -10,6 +10,7 @@ dependencies = [
     "celery>=5.3.4",
     "Flask>=2.2.5",
     "redis>=5.0.1",
+    "gunicorn>=21.2.0",
 ]
 requires-python = ">=3.11"
 
@@ -47,3 +48,7 @@ remove-unused-variables = true
 [tool.black]
 line-length = 120
 target-version = ['py311']
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"

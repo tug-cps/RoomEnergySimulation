@@ -1,9 +1,11 @@
 import connexion
+import os
+from app import encoder
 from celery import Celery
 from celery import Task
 from flask import Flask
 
-from app import encoder
+REDIS_URI = os.environ.get("REDIS_URI", "redis://localhost")
 
 
 def celery_init_app(app: Flask) -> Celery:
@@ -24,8 +26,8 @@ def create_app():
     app.app.json_provider_class = encoder.JSONEncoder
     app.app.config.from_mapping(
         CELERY=dict(
-            broker_url="redis://localhost",
-            result_backend="redis://localhost",
+            broker_url=REDIS_URI,
+            result_backend=REDIS_URI,
             task_ignore_result=True,
         )
     )
