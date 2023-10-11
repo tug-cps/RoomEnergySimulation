@@ -24,5 +24,8 @@ COPY --from=builder /project/__pypackages__/3.11/lib /project/pkgs
 # retrieve executables
 COPY --from=builder /project/__pypackages__/3.11/bin/* /bin/
 
+RUN groupadd -r user && useradd -r -g user user
+USER user
+
 # set command/entrypoint, adapt to fit your needs
-CMD ["python", "-m", "project"]
+CMD ["gunicorn", "-w 4", "--access-logfile=-", "-b app:8000", "app.factory:create_app()"]

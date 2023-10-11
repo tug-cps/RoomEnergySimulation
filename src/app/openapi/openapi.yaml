@@ -7,7 +7,7 @@ info:
 servers:
 - url: https://beyond.dilt.at/api/v1
 tags:
-- description: Simulatioon operations
+- description: Simulation operations
   name: simulation
 paths:
   /simulation:
@@ -58,8 +58,10 @@ components:
   schemas:
     T_Simulation:
       example:
-        result: 0.8008281904610115
+        date_done: 2000-01-23T04:56:07.000+00:00
+        heating_energy_consumption: 0.8008281904610115
         id: "12345"
+        cooling_energy_consumption: 6.027456183070403
         status: STARTED
       properties:
         id:
@@ -74,9 +76,16 @@ components:
           - SUCCESS
           title: status
           type: string
-        result:
-          title: result
+        heating_energy_consumption:
+          title: heating_energy_consumption
           type: number
+        cooling_energy_consumption:
+          title: cooling_energy_consumption
+          type: number
+        date_done:
+          format: date-time
+          title: date_done
+          type: string
       title: T_Simulation
       type: object
     T_SimulationResponse:
