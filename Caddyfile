@@ -1,3 +1,6 @@
-localhost:443 {
+beyond.dilt.at:443 {
+    basicauth {
+        beyond $2a$14$GnWbWXuj6g9xYWTUnEXicemtPqAHaydEdfErYXvwO2Jc1yVQmZ.PK
+    }
     reverse_proxy app:8000
 }
