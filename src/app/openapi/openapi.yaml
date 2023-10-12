@@ -19,6 +19,7 @@ paths:
             schema:
               $ref: '#/components/schemas/T_SimulationParameters'
         description: Simulation parameters
+        required: true
       responses:
         "200":
           content:
@@ -86,6 +87,9 @@ components:
           format: date-time
           title: date_done
           type: string
+      required:
+      - id
+      - status
       title: T_SimulationResult
       type: object
     T_SimulationResponse:
@@ -96,6 +100,8 @@ components:
           example: "12345"
           title: id
           type: string
+      required:
+      - id
       title: T_SimulationResponse
       type: object
     T_SimulationParameters:
@@ -124,5 +130,12 @@ components:
           description: Cooling/heating thermostat setpoints (C)
           title: thermostat_setpoint
           type: number
+      required:
+      - thermostat_setpoint
+      - wall_insulation_thickness
+      - wall_u_value
+      - window_shading_control
+      - window_shgc
+      - window_u_value
       title: T_SimulationParameters
       type: object

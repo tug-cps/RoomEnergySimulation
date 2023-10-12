@@ -92,6 +92,8 @@ class TSimulationParameters(Model):
         :param wall_insulation_thickness: The wall_insulation_thickness of this TSimulationParameters.
         :type wall_insulation_thickness: float
         """
+        if wall_insulation_thickness is None:
+            raise ValueError("Invalid value for `wall_insulation_thickness`, must not be `None`")  # noqa: E501
 
         self._wall_insulation_thickness = wall_insulation_thickness
 
@@ -115,6 +117,8 @@ class TSimulationParameters(Model):
         :param wall_u_value: The wall_u_value of this TSimulationParameters.
         :type wall_u_value: float
         """
+        if wall_u_value is None:
+            raise ValueError("Invalid value for `wall_u_value`, must not be `None`")  # noqa: E501
 
         self._wall_u_value = wall_u_value
 
@@ -138,6 +142,8 @@ class TSimulationParameters(Model):
         :param window_u_value: The window_u_value of this TSimulationParameters.
         :type window_u_value: float
         """
+        if window_u_value is None:
+            raise ValueError("Invalid value for `window_u_value`, must not be `None`")  # noqa: E501
 
         self._window_u_value = window_u_value
 
@@ -161,6 +167,8 @@ class TSimulationParameters(Model):
         :param window_shgc: The window_shgc of this TSimulationParameters.
         :type window_shgc: float
         """
+        if window_shgc is None:
+            raise ValueError("Invalid value for `window_shgc`, must not be `None`")  # noqa: E501
 
         self._window_shgc = window_shgc
 
@@ -184,6 +192,8 @@ class TSimulationParameters(Model):
         :param window_shading_control: The window_shading_control of this TSimulationParameters.
         :type window_shading_control: float
         """
+        if window_shading_control is None:
+            raise ValueError("Invalid value for `window_shading_control`, must not be `None`")  # noqa: E501
 
         self._window_shading_control = window_shading_control
 
@@ -207,5 +217,7 @@ class TSimulationParameters(Model):
         :param thermostat_setpoint: The thermostat_setpoint of this TSimulationParameters.
         :type thermostat_setpoint: float
         """
+        if thermostat_setpoint is None:
+            raise ValueError("Invalid value for `thermostat_setpoint`, must not be `None`")  # noqa: E501
 
         self._thermostat_setpoint = thermostat_setpoint

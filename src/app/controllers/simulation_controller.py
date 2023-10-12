@@ -50,4 +50,5 @@ def simulation_post(t_simulation_parameters=None):  # noqa: E501
         t_simulation_parameters.window_shading_control,
         t_simulation_parameters.thermostat_setpoint,
     )
+    print(result)
     return TSimulationResponse(id=result.id).to_dict()

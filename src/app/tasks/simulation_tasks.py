@@ -1,10 +1,7 @@
-import os
-
-import joblib
 import pandas as pd
 from celery import shared_task
 
-absolute_path = os.path.dirname(__file__)
+from app.ml import model
 
 
 @shared_task(ignore_result=False)
@@ -26,8 +23,6 @@ def simulate(
             "Thermostat settings offset (C)": [thermostat_setpoint],
         }
     )
-    model_path = os.path.join(absolute_path, "../ml/linear_model_6_features.pkl")
-    model = joblib.load(model_path)
     predictions = model.predict(X)
 
     return {"heating_energy_consumption": predictions[0][0], "cooling_energy_consumption": predictions[0][1]}
