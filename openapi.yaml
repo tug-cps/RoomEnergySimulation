@@ -17,6 +17,7 @@ paths:
       summary: Start a simulation
       requestBody:
         description: Simulation parameters
+        required: true
         content:
           application/json:
             schema:
@@ -54,6 +55,9 @@ components:
   schemas:
     T_SimulationResult:
       type: object
+      required:
+        - id
+        - status
       properties:
         id:
           type: string
@@ -70,12 +74,21 @@ components:
           format: 'date-time'
     T_SimulationResponse:
       type: object
+      required:
+        - id
       properties:
         id:
           type: string
           example: 12345
     T_SimulationParameters:
       type: object
+      required:
+        - wall_insulation_thickness
+        - wall_u_value
+        - window_u_value
+        - window_shgc
+        - window_shading_control
+        - thermostat_setpoint
       properties:
         wall_insulation_thickness:
           description: Wall insulation thickness (m)

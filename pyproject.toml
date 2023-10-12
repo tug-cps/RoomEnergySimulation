@@ -23,6 +23,7 @@ lint = [
 test = [
     "pytest>=7.4.2",
     "coverage>=7.3.2",
+    "webtest>=3.0.0",
 ]
 dev = [
     "setuptools>=68.2.2",
