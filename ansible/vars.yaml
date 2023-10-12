@@ -1,0 +1,3 @@
+---
+github_user: "{{ vault_github_user }}"
+github_password: "{{ vault_github_password}}"

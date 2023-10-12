@@ -1,5 +1,8 @@
+---
 - name: Install and start docker
   hosts: beyond
+  tags:
+    - setup
   tasks:
     - name: Install dependencies
       ansible.builtin.apt:
@@ -35,10 +38,31 @@
         name: docker
         state: started
         enabled: true
-- name: Install deps
+- name: Deploy project
   hosts: beyond
+  vars_files:
+    - ./vars.yaml
+    - ./vault.yaml
+  tags:
+    - deploy
   tasks:
-    - name: Install git
+    - name: Install dependencies
       ansible.builtin.apt:
-        name: git
+        pkg:
+          - git
+          - docker-compose
         state: present
+    - name: Get updated files from git repository
+      ansible.builtin.git:
+        repo: "https://{{ github_user | urlencode }}:{{ github_password | urlencode }}@github.com/DiltAnalytics/beyond-backend.git"
+        dest: "beyond-backend"
+        update: yes
+    - name: remove visibility of credentials
+      ansible.builtin.command:
+        cmd: git remote set-url origin github.com/DiltAnalytics/beyond-backend.git
+        chdir: "beyond-backend"
+    - name: build containers
+      docker_compose:
+        build: true
+        pull: true
+        project_src: beyond-backend
